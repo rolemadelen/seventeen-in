@@ -20,8 +20,8 @@ The "Seventeen" struct provides the following methods:
 - `in_hex()`: Returns the string representation of 17 in hexadecimal format.
 - `in_oct()`: Returns the string representation of 17 in octal format.
 - `chant()`: Returns a chant associated with the number 17.
-- `is_it(x: i32)`: Checks if the given number is equal to 17 and returns a boolean result.
-- `is_it_str(s: &str)`: Checks if the given string is equivalent to the string representation of 17 in any language and returns a boolean result.
+- `is_it(x: i32)`: Checks if the given number is equal to 17 and returns a Result<i32, String>.
+- `is_it_str(s: &str)`: Checks if the given string is equivalent to the string representation of 17 in any language and returns a Result<String, String>.
 
 ## Usage
 

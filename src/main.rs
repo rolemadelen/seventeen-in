@@ -69,37 +69,46 @@ impl Seventeen {
         String::from("Heroes of the morning light! Hey!")
     }
 
-    fn is_it(&self, x: i32) -> bool {
-        if x == 17 { true } else { false }
+    fn is_it(&self, x: i32) -> Result<i32, String> {
+        if x == 17 {
+            Ok(x)
+        } else {
+            Err(String::from("{x} is not 17"))
+        }
     }
 
-    fn is_it_str(&self, s: &str) -> bool {
+    fn is_it_str(&self, s: &str) -> Result<String, String> {
         let input = self.get_all();
         for (_, value) in input {
             if value == s {
-                return true;
+                return Ok(value.to_string());
             }
         }
 
-        false
+        Err(String::from("'{s}' is not 17."))
     }
 }
 
 fn main() {
     let seventeen = Seventeen;
+    println!("{}", seventeen.in_english());
+    println!("{}", seventeen.in_korean());
+    println!("{}", seventeen.in_korean_2());
+    println!("{}", seventeen.in_japanese());
+    println!("{}", seventeen.in_japanese_hiragana());
+    println!("{}", seventeen.in_japanese_katakana());
+    println!("{}", seventeen.in_french());
+    println!("{}", seventeen.in_roman_numeral());
+    println!("{}", seventeen.in_binary());
+    println!("{}", seventeen.in_oct());
+    println!("{}", seventeen.in_decimal());
+    println!("{}", seventeen.in_hex());
+    println!("{:?}", seventeen.get_all());
 
-    let all_languages = seventeen.get_all();
-    println!("Number 17 in different languages: {:?}", all_languages);
-
-    let seventeen_value = seventeen.seventeen();
-    println!("The value of 17 is: {}", seventeen_value);
-
-    let seventeen_english = seventeen.in_english();
-    println!("17 in English: {}", seventeen_english);
-
-    let is_seventeen = seventeen.is_it(18);
-    println!("Is '18' a 17? {}", is_seventeen);
-
-    let is_seventeen_in_korean = seventeen.is_it_str("열일곱");
-    println!("Is '열일곱' equivalent to 17 in any language? {}", is_seventeen_in_korean);
+    let is_it_17 = seventeen.is_it(17);
+    if let Ok(x) = is_it_17 {
+        println!("Yes this number is 17.");
+    } else {
+        println!("No this number is not 17.");
+    }
 }
