@@ -1,4 +1,4 @@
-use seventeen::Seventeen;
+use seventeen_in::Seventeen;
 
 fn main() {
     let seventeen = Seventeen::new();
